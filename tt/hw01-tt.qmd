@@ -26,8 +26,10 @@ ggplot(cappuccino_index, aes(x = index)) +
   ) +
   labs(
     title = "Countries by Cappuccino Index Range",
+    subtitle= "The Cost for Countries in Reality",
     x = "Cappuccino Index (in minutes)",
     y = "Number of Countries",
+    caption = "Alara Yener, 9/16/2026, cappuccino_index.csv",
     alt = "This is a historgram that shows the cappuccino index in minutes on the x-axis and the number of countries on the y-axis. There is a strong left skew, however there is an outlier on the far right."
   ) +
   theme_minimal() +
