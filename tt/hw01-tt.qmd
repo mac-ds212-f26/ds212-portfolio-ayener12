@@ -1,0 +1,78 @@
+---
+title: "Homework 01"
+---
+
+
+## TidyTuesday Part
+
+Explore the week's [TidyTuesday](https://github.com/rfordatascience/tidytuesday) challenge. Develop a research question, then answer it through a short data story mainly composed of [effective visualizations](https://docs.google.com/presentation/d/1WHr6Itzm2IJLxvppcacxHpr8R4NxO4MfvWWUPmtQx6Q/preview?slide=id.g13360dab5d5_0_61).  Provide sufficient background for readers to grasp your narrative.  Refer to the Homework Instructions ⭐ page on the course website for details on how to submit this part.
+
+
+```{r}
+cappuccino_index <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')
+```
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+
+```{r}
+ggplot(cappuccino_index, aes(x = index)) +
+  geom_histogram(
+    binwidth = 5,
+    fill = "lightblue",
+    color = "white"
+  ) +
+  labs(
+    title = "Countries by Cappuccino Index Range",
+    x = "Cappuccino Index (in minutes)",
+    y = "Number of Countries",
+    alt = "This is a historgram that shows the cappuccino index in minutes on the x-axis and the number of countries on the y-axis. There is a strong left skew, however there is an outlier on the far right."
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(size = 16))
+```
+
+
+```{r}
+extremes <- cappuccino_index |>
+  slice_max(index, n = 10) |>
+  bind_rows(slice_min(cappuccino_index, index, n = 10)) |>
+  distinct(country, .keep_all = TRUE)
+```
+
+
+
+```{r}
+ggplot(extremes, aes(
+  x = reorder(country, index),
+  y = index
+)) +
+  geom_col(fill = "lightblue") +
+  coord_flip() +
+  labs(
+    title = "Seeing Price Inequalities Through Coffee",
+    subtitle= "The 20 Most Extreme Cases",
+    caption = "Alara Yener, 9/16/2026, cappuccino_index.csv",
+    x = NULL,
+    y = "Minutes of work needed to purchase coffee",
+    alt = "Horizontal bar chart showing the 20 countries with the highest and lowest minutes needed to be worked to get a cappuccino. The x-axis has the number of minutes of work needed to purchase a cappuccino and the y-axis lists those most extreme 20 countries. "
+  ) +
+  theme_minimal() +
+  theme(plot.title = element_text(size = 16))
+```
+
+
+
+
+How Much Work Does a Cappuccino Actually Cost?
+
+A cappuccino is more than just the price listed on a menu. Its affordability can vary depending on how much a worker earns. The Cappuccino Index measures affordability by estimating the number of minutes a barista must work to afford a small cappuccino in their country. My research question is:
+
+How does the amount of time workers need to work to afford a cappuccino vary across countries? 
+
+From this research question I looked at the overall distribution of countries in relation to the number of minutes they would have to work. After this inital exploration, I was curious about the extremes. This prompted me to take a look at the 10 countries that take the least amount of time to purchase a cappuccino and the ten countries where is takes the most amount of time. This goes to show how much a cappuccino can cost strikingly different amounts depending on what country you are in.
+
+
+
