@@ -43,6 +43,17 @@
     ]
   },
   {
+    "objectID": "tt/hw01-tt.html",
+    "href": "tt/hw01-tt.html",
+    "title": "Homework 01",
+    "section": "",
+    "text": "TidyTuesday Part\nExplore the week’s TidyTuesday challenge. Develop a research question, then answer it through a short data story mainly composed of effective visualizations. Provide sufficient background for readers to grasp your narrative. Refer to the Homework Instructions ⭐ page on the course website for details on how to submit this part.\nCodecappuccino_index &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-08/cappuccino_index.csv')\nCodelibrary(ggplot2)\nCodeggplot(cappuccino_index, aes(x = index)) +\n  geom_histogram(\n    binwidth = 5,\n    fill = \"lightblue\",\n    color = \"white\"\n  ) +\n  labs(\n    title = \"Countries by Cappuccino Index Range\",\n    x = \"Cappuccino Index (in minutes)\",\n    y = \"Number of Countries\"\n  ) +\n  theme_minimal()\nHow Much Work Does a Cappuccino Actually Cost?\nA cappuccino is more than just the price listed on a menu. Its affordability can vary depending on how much a worker earns. The Cappuccino Index measures affordability by estimating the number of minutes a barista must work to afford a small cappuccino in their country. This dataset includes the Cappuccino Index for different countries as well as the number of cafes used to calculate each country’s index.\nResearch Question: How does the amount of time workers need to work to afford a cappuccino vary across countries?",
+    "crumbs": [
+      "TidyTuesday",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Homework 01</span>"
+    ]
+  },
+  {
     "objectID": "pcl/pcl.html",
     "href": "pcl/pcl.html",
     "title": "Pre-Class Learning Summaries",
@@ -50,7 +61,7 @@
     "text": "R",
     "crumbs": [
       "Pre-Class Learnings",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Pre-Class Learning Summaries</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Pre-Class Learning Summaries</span>"
     ]
   },
   {
@@ -61,7 +72,7 @@
     "text": "Quarto\n\n\n\nfrom qmd4sci.njtierney.com",
     "crumbs": [
       "Pre-Class Learnings",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Pre-Class Learning Summaries</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Pre-Class Learning Summaries</span>"
     ]
   },
   {
@@ -69,10 +80,10 @@
     "href": "ica/ica-sample1.html",
     "title": "ICA Sample 1",
     "section": "",
-    "text": "Add content here",
+    "text": "Add content here\n\nCodelibrary(dplyr)\n\n\n\nCodeweather &lt;- read.csv(\"weatherDS212.csv\")\n\n\n\nCodeweather_clean &lt;- weather %&gt;% \n    mutate(PrecipYr = na_if(PrecipYr, 99999))",
     "crumbs": [
       "In-Class Activities",
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>ICA Sample 1</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ICA Sample 1</span>"
     ]
   },
   {
@@ -83,7 +94,7 @@
     "text": "Add content here",
     "crumbs": [
       "In-Class Activities",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>ICA Sample 2</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>ICA Sample 2</span>"
     ]
   },
   {
@@ -94,7 +105,7 @@
     "text": "Add content here",
     "crumbs": [
       "Extras",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Extra Sample 1</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Extra Sample 1</span>"
     ]
   },
   {
@@ -105,7 +116,7 @@
     "text": "Add content here",
     "crumbs": [
       "Extras",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Extra Sample 2</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Extra Sample 2</span>"
     ]
   }
 ]
