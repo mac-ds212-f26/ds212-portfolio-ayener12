@@ -56,13 +56,14 @@ ggplot(extremes, aes(
   labs(
     title = "Seeing Price Inequalities Through Coffee",
     subtitle= "The 20 Most Extreme Cases",
-    caption = "Alara Yener, 9/16/2026, cappuccino_index.csv",
+    caption = "By: Alara Yener, Created on: 9/16/2026, Sourced from: cappuccino_index.csv",
     x = NULL,
-    y = "Minutes of work needed to purchase coffee",
+    y = "Minutes of work needed to purchase a small cup of coffee",
     alt = "Horizontal bar chart showing the 20 countries with the highest and lowest minutes needed to be worked to get a cappuccino. The x-axis has the number of minutes of work needed to purchase a cappuccino and the y-axis lists those most extreme 20 countries. "
   ) +
   theme_minimal() +
-  theme(plot.title = element_text(size = 16))
+  theme(plot.title = element_text(size = 16)) +
+  theme_classic()
 ```
 
 
