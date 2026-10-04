@@ -1,0 +1,76 @@
+---
+title: "Homework 02"
+---
+
+
+## TidyTuesday Part (Optional)
+
+::: {.callout-important title="Instructions"}
+
+You can count work on this week's TidyTuesday toward the exceptional work.
+
+:::
+
+Explore the week's [TidyTuesday](https://github.com/rfordatascience/tidytuesday) challenge. Develop a research question, then answer it through a short data story mainly composed of [effective visualizations](https://docs.google.com/presentation/d/1WHr6Itzm2IJLxvppcacxHpr8R4NxO4MfvWWUPmtQx6Q/preview?slide=id.g13360dab5d5_0_61).  Provide sufficient background for readers to grasp your narrative.  Refer to the Homework Instructions ⭐ page on the course website for details on how to submit this part.
+
+
+
+```{r}
+library(ggplot2)
+dead_sea_scrolls <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2026/2026-09-15/dead_sea_scrolls.csv')
+
+```
+
+```{r}
+
+ggplot(dead_sea_scrolls,aes(x = period, fill = material)) +
+  geom_bar() +
+  labs(
+    title = "Dead Sea Scrolls by Period and Material",
+    subtitle= "Parchment dominates across the board, with the Herodian period having the most manuscripts",
+    caption = "By: Alara Yener, Created on: 9/22/2026, Sourced from: Dead Sea Scrolls Manuscripts",
+    x = "Period",
+    y = "Number of Manuscripts",
+    fill = "Material",
+    alt = "Bar chart displaying time period on the x-axis and the number of manuscripts on the y access. With each bar being color coded on which material each manuscrip is made out of."
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.subtitle = element_text(size = 6),
+    legend.position = "right",
+    legend.margin = margin(t=50)
+  )
+```
+
+```{r}
+ggplot(dead_sea_scrolls, aes(x = period)) +
+  geom_bar(fill = "steelblue") +
+  facet_wrap(~ material) +
+  labs(
+    title = "Number of Dead Sea Scrolls by Period and Material",
+    subtitle = "Manuscript counts across historical periods, separated by material",
+    caption = "Created by: Alara Yener, Created on: 9/22/2026,  Data from: Dead Sea Scrolls Manuscripts, TidyTuesday Week 37",
+    x = "Period",
+    y = "Number of Manuscripts"
+  ) +
+  coord_flip() +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    plot.caption = element_text(hjust = 0),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 10),
+    strip.text = element_text(face = "bold")
+  )
+```
+
+
+
+
+
+How does the material of Dead Sea Scroll manuscripts vary across different historical periods?
+
+The Dead Sea Scrolls provide an important look into the manuscripts and written materials preserved from the ancient world. This visualization examines the relationship between the historical period of a manuscript and the material it was written on. The data shows that parchment is the most prominent material across the periods represented in the dataset, while the Herodian period has the largest number of manuscripts. These patterns suggest that parchment was widely represented among the surviving manuscripts, particularly among those dated to the Herodian period. The visualization gives us a way to compare how manuscript materials are seen from across the different periods in the dataset.
+
+

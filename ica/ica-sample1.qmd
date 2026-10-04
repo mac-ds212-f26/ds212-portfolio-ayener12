@@ -3,3 +3,19 @@ title: "ICA Sample 1"
 ---
 
 Add content here
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+weather <- read.csv("weatherDS212.csv")
+```
+
+```{r}
+weather_clean <- weather %>% 
+    mutate(PrecipYr = na_if(PrecipYr, 99999))
+```
+
+
