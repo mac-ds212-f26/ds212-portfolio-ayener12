@@ -43,6 +43,31 @@ ggplot(dead_sea_scrolls,aes(x = period, fill = material)) +
   )
 ```
 
+```{r}
+ggplot(dead_sea_scrolls, aes(x = period)) +
+  geom_bar(fill = "steelblue") +
+  facet_wrap(~ material) +
+  labs(
+    title = "Number of Dead Sea Scrolls by Period and Material",
+    subtitle = "Manuscript counts across historical periods, separated by material",
+    caption = "Created by: Alara Yener, Created on: 9/22/2026,  Data from: Dead Sea Scrolls Manuscripts, TidyTuesday Week 37",
+    x = "Period",
+    y = "Number of Manuscripts"
+  ) +
+  coord_flip() +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    plot.caption = element_text(hjust = 0),
+    plot.title = element_text(face = "bold"),
+    plot.subtitle = element_text(size = 10),
+    strip.text = element_text(face = "bold")
+  )
+```
+
+
+
+
 
 How does the material of Dead Sea Scroll manuscripts vary across different historical periods?
 

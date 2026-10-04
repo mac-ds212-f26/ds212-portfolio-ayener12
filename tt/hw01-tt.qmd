@@ -47,6 +47,49 @@ extremes <- cappuccino_index |>
 
 
 ```{r}
+extremes <- extremes |>
+  mutate(
+    label = if_else(
+      index == max(index) | index == min(index),
+      paste0(round(index, 1), " min"),
+      ""
+    )
+  )
+```
+
+
+
+
+```{r}
+ggplot(extremes, aes(
+  x = reorder(country, index),
+  y = index
+)) +
+  geom_col(fill = "lightblue") +
+  geom_text(
+    aes(label = label),
+    hjust = -0.2
+  ) +
+  coord_flip() +
+  labs(
+    title = "Seeing Price Inequalities Through Coffee",
+    subtitle = "We can see the comparison between Australia and Pakistan and it is staggering.",
+    caption = "By: Alara Yener, Created on: 9/16/2026, Sourced from: CappuccinoIndex, TidyTuesday",
+    x = NULL,
+    y = "Minutes of work needed to purchase a small cup of coffee"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(size = 16),
+    plot.subtitle = element_text(size = 10)
+  )
+
+```
+
+
+
+
+```{r}
 ggplot(extremes, aes(
   x = reorder(country, index),
   y = index
@@ -55,17 +98,102 @@ ggplot(extremes, aes(
   coord_flip() +
   labs(
     title = "Seeing Price Inequalities Through Coffee",
-    subtitle= "The 20 Most Extreme Cases",
+    subtitle= "We can see the comparison between Australia and Pakistan and it is stagering. 
+    Pakistan's cost of a small cup of coffee is over 27 times higher than in Australia, 
+    relative to wage",
     caption = "By: Alara Yener, Created on: 9/16/2026, Sourced from: cappuccino_index.csv",
     x = NULL,
     y = "Minutes of work needed to purchase a small cup of coffee",
     alt = "Horizontal bar chart showing the 20 countries with the highest and lowest minutes needed to be worked to get a cappuccino. The x-axis has the number of minutes of work needed to purchase a cappuccino and the y-axis lists those most extreme 20 countries. "
   ) +
   theme_minimal() +
-  theme(plot.title = element_text(size = 16)) +
+  theme(plot.title = element_text(size = 16),
+        plot.subtitle = element_text(size = 1)) +
   theme_classic()
 ```
 
+```{r}
+ggplot(extremes, aes(
+  x = reorder(country, index),
+  y = index
+)) +
+  geom_col(fill = "lightblue") +
+  geom_text(
+    aes(label = label),
+    hjust = -0.2
+  ) +
+  coord_flip() +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.15))
+  ) +
+  labs(
+    title = "Seeing Price Inequalities Through Coffee",
+    subtitle = "We can see the comparison between Australia and Pakistan and it is staggering.",
+    caption = "By: Alara Yener, Created on: 9/16/2026, Sourced from: CappuccinoIndex, TidyTuesday",
+    x = NULL,
+    y = "Minutes of work needed to purchase a small cup of coffee"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(size = 16),
+    plot.subtitle = element_text(size = 10)
+  )
+
+```
+
+
+```{r}
+ggplot(extremes, aes(
+  x = reorder(country, index),
+  y = index
+)) +
+  geom_col(fill = "lightblue") +
+  geom_text(
+    aes(label = label),
+    hjust = -0.2
+  ) +
+  coord_flip() +
+  labs(
+    title = "Seeing Price Inequalities Through Coffee",
+    subtitle = "The number of minutes needed to buy a coffee varies dramatically between Australia and Pakistan.",
+    caption = "By: Alara Yener, Created on: 9/16/2026, Data from: Cappuccino Index, TidyTuesday Week 36",
+    x = NULL,
+    y = "Minutes of work needed to purchase a small cup of coffee"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(size = 16),
+    plot.subtitle = element_text(size = 10)
+  )
+```
+
+
+
+```{r}
+ggplot(extremes, aes(
+  x = reorder(country, index),
+  y = index
+)) +
+  geom_col(fill = "lightblue") +
+  geom_text(
+    aes(label = label),
+    hjust = -0.2
+  ) +
+  coord_flip(clip = "off") +
+  labs(
+    title = "Seeing Price Inequalities Through Coffee",
+    subtitle = "The number of minutes needed to buy a coffee varies dramatically between Australia and Pakistan.",
+    caption = "By: Alara Yener, Created on: 9/16/2026, Data from: Cappuccino Index, TidyTuesday Week 36",
+    x = NULL,
+    y = "Minutes of work needed to purchase a small cup of coffee"
+  ) +
+  theme_classic() +
+  theme(
+    plot.title = element_text(size = 16),
+    plot.subtitle = element_text(size = 10),
+    plot.margin = margin(10, 50, 10, 10)
+  )
+```
 
 
 
