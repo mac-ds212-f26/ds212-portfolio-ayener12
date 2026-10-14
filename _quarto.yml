@@ -84,6 +84,14 @@ book:
       - ica/ica-sample1.qmd
       - ica/ica-sample2.qmd
       - ica/02-file-sys.qmd
+      - ica/03-adv-ggplot-notes.qmd
+      - ica/04-adv-maps-1-notes.qmd
+      - ica/06-wrangling-1.qmd
+      - ica/07-wrangling-2.qmd
+      - ica/08-missing-data.qmd
+      - ica/09-functions.qmd
+      - ica/10-base-r.qmd
+      - ica/11-iteration-1.qmd
 
     - part: "Extras"
       chapters:

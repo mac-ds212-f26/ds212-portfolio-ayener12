@@ -222,7 +222,9 @@ Using `tidyverse` functions, complete the followings on the sample dataset:
 Subset to diamonds that are less than `400` dollars **or** more than `10000` dollars.
 
 ```{r}
-
+diamonds |> 
+    filter(price < 400 | price > 10000) |> 
+    head()
 ```
 
 
@@ -231,7 +233,9 @@ Subset to diamonds that are less than `400` dollars **or** more than `10000` dol
 Subset to diamonds that are between `500` **and** `600` dollars (inclusive).
 
 ```{r}
-
+diamonds |> 
+    filter(price >= 500, price <= 600) |> 
+    head()
 ```
 
 ### ✏️ Count Cuts with `%in%`
@@ -241,7 +245,9 @@ How many diamonds are of either `Fair`, `Premium`, **or** `Ideal` cut (a total c
     - Second, do this the correct way with an appropriate logical operator.
 
 ```{r}
-
+diamonds |> 
+    mutate(is_fpi = cut %in% c("Fair", "Premium", "Ideal")) |> 
+    summarize(num_fpi = sum(is_fpi), frac_fpi = mean(is_fpi))
 ```
 
 ### ✏️ Use `any()` & `all()`
@@ -249,7 +255,13 @@ How many diamonds are of either `Fair`, `Premium`, **or** `Ideal` cut (a total c
 Are there **any** diamonds of `Fair` cut that are more than \$3000? Are `all` diamonds of Ideal cut more than \$2000?
 
 ```{r}
+diamonds |> 
+    filter(cut == "Fair") |> 
+    summarize(any_high = any(price > 3000))
 
+diamonds |> 
+    filter(cut == "Ideal") |> 
+    summarize(all_high = all(price > 2000))
 ```
 
 
@@ -260,7 +272,16 @@ Create two new categorized versions of `price` by looking up the documentation f
     - `price_cat2`: "low" if price is less than 500, "medium" if price is between 500 `and` 1000 dollars inclusive, `and` "high" otherwise.
 
 ```{r}
-
+diamonds |> 
+    mutate(
+        price_cat1 = if_else(price < 500, "low", "high"),
+        price_cat2 = case_when(
+            price < 500 ~ "low",
+            price >= 500 & price <= 1000 ~ "medium",
+            price > 1000 ~ "high"
+        )
+    ) |> 
+    head()
 ```
 
 
@@ -563,6 +584,8 @@ Create a factor version of the following data with the levels in a sensible orde
 
 ```{r}
 ratings <- c("High", "Medium", "Low")
+ratings_fct <- fct(ratings, levels = c("Low", "Medium", "High"))
+ratings_fct
 ```
 
 

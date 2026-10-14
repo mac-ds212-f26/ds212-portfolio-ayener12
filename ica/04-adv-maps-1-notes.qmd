@@ -93,7 +93,8 @@ mn_cities <- st_read("Data/City_And_Township_Population_Centers/City_And_Townshi
 
 ```{r}
 mn_water <- st_read("../data/LakesAndRivers.shp")
-
+mn_cities <- st_read("../data/City_And_Township_Population_Centers/City_And_Township_Population_Centers.shp")
+mn_water <- st_read("../data/Lakes_and_Rivers/Lakes_and_Rivers.shp")
 ```
 
 
