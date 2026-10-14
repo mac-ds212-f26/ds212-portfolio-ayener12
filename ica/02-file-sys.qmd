@@ -1,0 +1,99 @@
+---
+title: "2 File System"
+---
+
+
+
+## 🧩 Learning Goals 
+
+By the end of this lesson, you should be able to:
+
+-   Navigate the file system of your portfolio and homework repositories
+-   Explain the difference between absolute and relative file paths and why relative file paths are preferred when referencing files
+-   Construct relative file paths to read in data
+-   Review data wrangling from COMP/STAT 112
+-   Use the `git` verbs (via Github.com and Github Desktop): `clone`, `add`, `commit`, `push`, and `pull` to interact with your repositories
+-   Practice using [keyboard shortcuts](https://hash-mac.github.io/ds212site-f26/app/keyboard.qmd)
+
+
+## Tips
+
+Read the following tips for help with the following exercises.
+
+- `month.abb` is a built-in object in R with 3-letter month abbreviations
+- You can create your own data frame with the `tibble()` function. Look up the documentation for this function by typing `?tibble::tibble` in the Console.
+- You can create regular sequences in R with `:`, eg, `3:5` generates the sequence `c(3, 4, 5)`.
+- You can create regular sequences in R with `seq()`, eg, `seq(from = 3, to = 5, by = 1)` generates the sequence `c(3, 4, 5)`.  Look up the documentation for this function by typing `?seq` in the Console.
+
+
+## Keyboard Shortcuts
+
+Try out the following as you work on this exercise:
+
+- Tab completion (Try this out when writing your file paths! Typing out a partial path will pull up a mini file-explorer)
+- Insert a code chunk
+- Run a code chunk
+- Navigating around words and lines (selecting and deleting them)
+- Run selected lines (not a whole code chunk)
+- Insert the assignment operator (`<-`)
+- Insert the pipe operator (`|>`)
+
+
+## ✏️ Download Data
+
+Download the data files linked in the **Code Links** area at the end of the table of contents of the page.  Move the data file to `ica\data\raw` folder.
+
+
+## ✏️ Read Data
+
+Read in the weather data in the data file you downloaded. Use relative file path after you move it to the instructed location.
+
+```{r}
+library(tidyverse)
+weather <- read_csv("weatherDS212.csv")
+```
+
+
+## ✏️ Clean Data
+
+There is a variable that has values that don't make sense in the data context. Figure out which variable this is and clean it up by making those values missing using `na_if()`.
+
+```{r}
+weather_clean <- weather |> 
+    mutate(PrecipYr = na_if(PrecipYr, 99999))
+```
+
+
+## ✏️ Create Day of Year
+
+Create a variable called `dateInYear` that indicates the day of the year (1-365) for each case. (Jan 1 should be 1, and Dec 31 should be 365).
+
+```{r}
+weather_clean <- weather_clean |> 
+    mutate(dateInYear = yday(mdy(date)))
+```
+
+
+## ✏️ Create Month Name
+
+Create a variable called `month_name` that shows the 3-letter abbreviation for each case.
+
+```{r}
+weather |> 
+    mutate(month_name = month.abb[Month]) |> head()
+```
+
+
+## ✏️ Save Data
+
+Save the wrangled data to the `data/processed/` folder using `write_csv()`. Name this file `weather_clean.csv`. Look up the documentation for this function by typing `?write_csv` in the Console. You'll need to write an appropriate relative path.
+
+```{r}
+write_csv(weather_clean, file = "weatherDS212.csv")
+```
+
+
+## Done!
+
+- Check the ICA Instructions for how to (a) push your code to GitHub and (b) update your portfolio website
+
